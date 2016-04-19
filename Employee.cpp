@@ -167,9 +167,9 @@ int main() {
               //pushes on to vectorOfItems
 
               //VALUES ARE TEMPORARY
-              int creativity, tempcre;
-              int activity, tempact;
-              int complexity, tempcomp;
+              int creativity;
+              int activity;
+              int complexity;
               string n, name;
               // make name all lowercase
               int price;
