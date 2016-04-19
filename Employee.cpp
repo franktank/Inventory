@@ -62,6 +62,12 @@ void userLoggedIn() {
       //takes in input for creativity/activity/complexity
       //creates item
       //pushes on to vectorOfItems
+      int creativity;
+      int activity;
+      int complexity;
+      string name;
+      int price;
+      vectorOfItems.push_back(item(name, price, creativity, activity, complexity));
     }
 
     else if ( loggedInInput == 2 ) {
