@@ -1,4 +1,4 @@
-#include <iostream>
+##include <iostream>
 #include <string>
 #include <sstream>
 #include <vector>
@@ -60,7 +60,6 @@ void userLoggedIn() {
     cout << "4. Exit" << endl;
     int loggedInInput;
     cin >> loggedInInput;
-
     if ( loggedInInput == 1 ) {
       //takes in input for creativity/activity/complexity
       //creates item
@@ -73,7 +72,6 @@ void userLoggedIn() {
       int price;
       vectorOfItems.push_back(item(name, price, creativity, activity, complexity));
     }
-
     else if ( loggedInInput == 2 ) {
       //takes in input of item name
       //removes first found item from vectorOfItems
@@ -81,7 +79,6 @@ void userLoggedIn() {
       // again this would be better in main function because we can keep track of employee with a variable equal to the username
       string purchaseName;
       // make all lowercase
-
       for (int i = 0; i < vectorOfItems.size(); i++) {
         if (purchaseName == vectorOfItems[i].getItemName) {
           vectorOfEmployees[currentEmployee].totalSales++;
@@ -89,9 +86,7 @@ void userLoggedIn() {
           vectorOfItems.erase(vectorOfItems.begin() + i);
         }
       }
-
     }
-
     else if ( loggedInInput == 3 ) {
       //loops through vectorOfItems and prints each itemName and itemPrice
       cout << "Current in stock: " << endl;
@@ -99,7 +94,6 @@ void userLoggedIn() {
         cout << "Item: " <<vectorOfItems[i].getItemName << " Price: " << vectorOfItems[i].getItemPrice << endl;
       }
     }
-
     else if ( loggedInInput == 4 ) {
       break;
     }
@@ -170,9 +164,32 @@ int main() {
               int creativity ;
               int activity;
               int complexity;
-              string name;
+              string n, name;
               // make name all lowercase
               int price;
+              
+              
+              cout << "What is the name of item you'd like to restock?" << endl;
+              cin >> n;
+              int counter = 1;
+              char c;
+              while (counter < n.length()) //converts all characters in string to lowercase
+              {
+				  c = n[counter];
+				  if (isupper(c))
+				  {
+					  tolower(n[counter]);
+				  }
+			  }
+			  name = n;
+              cout << "What is the selling price for this item?" << endl; // may add functionality to check for curently existing item, and using those setting to restock the item. - PT
+              cin >> price;
+              cout << "What is the creativity value associated with the item? (Scale of 1-5)" << endl;
+              cin >> creativity;
+              cout << "What is the activity value associated with the item? (Scale of 1-5)" << endl;
+              cin >> activity;
+              cout << "What is the complexity value associated with the item? (Scale of 1-5)" << endl;
+              cin >> complexity;
               vectorOfItems.push_back(items(name, price, creativity, activity, complexity));
               cout << "Restocked!" << endl;
             }
@@ -182,6 +199,8 @@ int main() {
               //removes first found item from vectorOfItems
               //add to sale count of employee -> increments value of count for employee
               // again this would be better in main function because we can keep track of employee with a variable equal to the username
+              
+              
               string purchaseName;
               bool success = false;
               // make all lowercase
