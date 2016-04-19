@@ -75,10 +75,15 @@ void userLoggedIn() {
       //removes first found item from vectorOfItems
       //add to sale count of employee -> increments value of count for employee
       // again this would be better in main function because we can keep track of employee with a variable equal to the username
+      string purchaseName;
     }
 
     else if ( loggedInInput == 3 ) {
       //iterates vectorOfItems and prints each itemName
+      cout << "Current in stock: " << endl;
+      for (int i = 0; i < vectorOfItems.size(); i++) {
+        cout << "Item: " <<vectorOfItems[i].getItemName << " Price: " << vectorOfItems[i].getItemPrice << endl;
+      }
     }
 
     else if ( loggedInInput == 4 ) {
