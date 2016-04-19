@@ -167,9 +167,9 @@ int main() {
               //pushes on to vectorOfItems
 
               //VALUES ARE TEMPORARY
-              int creativity ;
-              int activity;
-              int complexity;
+              int creativity, tempcre;
+              int activity, tempact;
+              int complexity, tempcomp;
               string n, name;
               // make name all lowercase
               int price;
@@ -190,14 +190,60 @@ int main() {
 				  counter++;
 			  }
 			  name = n;
-              cout << "What is the selling price for this item?" << endl; // may add functionality to check for curently existing item, and using those setting to restock the item. - PT
-              cin >> price;
-              cout << "What is the creativity value associated with the item? (Scale of 1-5)" << endl;
-              cin >> creativity;
-              cout << "What is the activity value associated with the item? (Scale of 1-5)" << endl;
-              cin >> activity;
-              cout << "What is the complexity value associated with the item? (Scale of 1-5)" << endl;
-              cin >> complexity;
+			  counter = 0;
+			  int counter2 = 0;
+			  int restockchoice = 0;
+			  bool alreadychecked = false;
+			  bool usingprevious = false;
+			  vector<items> vectorOfCheckedItems;
+			  while(counter < vectorOfItems.size()) // checks to see if an item with the same name has already been added to the inventory, and prompts user if they would like to use these stats
+			  {
+				  while (counter2 < vectorOfCheckedItems.size())
+				  {
+					  if ((vectorOfCheckedItems[counter2].getItemName() == vectorOfItems[counter].getItemName()) && (vectorOfCheckedItems[counter2].getItemPrice() == vectorOfItems[counter].getItemPrice()))
+					  {
+						  alreadychecked = true;
+					  }
+				  }
+				  if ((vectorOfItems[counter].getItemName() == name) && !alreadychecked)
+				  {
+					  cout << name << " has been found in our inventory with a price of " << vectorOfItems[counter].getItemPrice()<< ", "<< vectorOfItems[counter].getItemCreativity() << " Creativity, " << vectorOfItems[counter].getItemActivity() << " Activity, and " << vectorOfItems[counter].getItemComplexity() << " complexity. Would you like to use these statistics?" << endl;
+					  cout << "1. Yes" << endl;
+					  cout << "2. No" << endl;
+					  cin >> restockchoice;
+					  if (restockchoice == 1)
+					  {
+						  price = vectorOfItems[counter].getItemPrice();
+						  creativity = vectorOfItems[counter].getItemCreativity();
+						  activity = vectorOfItems[counter].getItemActivity();
+						  complexity = vectorOfItems[counter].getItemComplexity();
+						  usingprevious = true;
+						  break;
+					  }
+					  else if (restockchoice == 2)
+					  {
+						  vectorOfCheckedItems.push_back(vectorOfItems[counter]);
+					  }
+					  else
+					  {
+						  //needs to add a validator for false choice
+					  }
+				  }
+				  
+				  counter++;
+			  }
+			  if (!usingprevious)
+			  {
+				cout << "What is the selling price for this item?" << endl; 
+				cin >> price;
+				cout << "What is the creativity value associated with the item? (Scale of 1-5)" << endl;
+				cin >> creativity;
+				cout << "What is the activity value associated with the item? (Scale of 1-5)" << endl;
+				cin >> activity;
+				cout << "What is the complexity value associated with the item? (Scale of 1-5)" << endl;
+				cin >> complexity;
+			  }
+
               vectorOfItems.push_back(items(name, price, creativity, activity, complexity));
               cout << "Restocked!" << endl;
             }
