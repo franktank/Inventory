@@ -62,6 +62,13 @@ void userLoggedIn() {
       //takes in input for creativity/activity/complexity
       //creates item
       //pushes on to vectorOfItems
+      int creativity;
+      int activity;
+      int complexity;
+      string name;
+      // make name all lowercase
+      int price;
+      vectorOfItems.push_back(item(name, price, creativity, activity, complexity));
     }
 
     else if ( loggedInInput == 2 ) {
@@ -69,10 +76,25 @@ void userLoggedIn() {
       //removes first found item from vectorOfItems
       //add to sale count of employee -> increments value of count for employee
       // again this would be better in main function because we can keep track of employee with a variable equal to the username
+      string purchaseName;
+      // make all lowercase
+
+      for (int i = 0; i < vectorOfItems.size(); i++) {
+        if (purchaseName == vectorOfItems[i].getItemName) {
+          vectorOfEmployees[currentEmployee].totalSales++;
+          //deletes item in vector
+          vectorOfItems.erase(vectorOfItems.begin() + i);
+        }
+      }
+
     }
 
     else if ( loggedInInput == 3 ) {
-      //iterates vectorOfItems and prints each itemName
+      //loops through vectorOfItems and prints each itemName and itemPrice
+      cout << "Current in stock: " << endl;
+      for (int i = 0; i < vectorOfItems.size(); i++) {
+        cout << "Item: " <<vectorOfItems[i].getItemName << " Price: " << vectorOfItems[i].getItemPrice << endl;
+      }
     }
 
     else if ( loggedInInput == 4 ) {
@@ -85,6 +107,8 @@ void userLoggedIn() {
 int main() {
   vector<items> vectorOfItems;
   vector<employees> vectorOfEmployees;
+
+  int currentEmployee;
 
   cout << "Welcome to the shop! Are you an employee or customer?" << endl;
   cout << "1. Employee" << endl;
@@ -113,6 +137,7 @@ int main() {
         //Iterate through vector and compare username/password -> write a method to return true/false
         for (int i = 0; i < vectorOfEmployees.size(); i++) {
           if(username == vectorOfEmployees[i].getEmpUsername() && password == vectorOfEmployees[i].getEmpPassword()) {
+            currentEmployee = i;
             isAuthenticated = true;
             break;
           }
