@@ -10,12 +10,13 @@ using namespace std;
 
 class items {
 public:
-  items(string n, int p, int c, int a):itemName(n)
+  items(string n, int p, int c, int a, int comp):itemName(n)
                                       , itemPrice(p)
                                       , itemCreativity(c)
                                       , itemActivity(a)
-                                      , itemComplexity(c)
+                                      , itemComplexity(comp)
                                     {}
+
   string getItemName() { return itemName; }
   int getItemPrice() { return itemPrice; }
   int getItemCreativity() { return itemCreativity; }
@@ -48,6 +49,8 @@ public:
   int empTotalSales;
 };
 
+
+/*
 void userLoggedIn() {
   while( true ) {
     cout << "What would you like to do?" << endl;
@@ -102,6 +105,7 @@ void userLoggedIn() {
     }
   } // end of while loop for user logged in
 }
+*/
 
 
 int main() {
@@ -144,8 +148,71 @@ int main() {
         }
         if (isAuthenticated) {
           //write function for logged in prompts for employees
-          userLoggedIn();
+          //userLoggedIn(); <---__******
+
+
           //might put code directly in here because it would be easier to append to vector, check username for sales... etc
+          while( true ) {
+            cout << "What would you like to do?" << endl;
+            cout << "1. Restock" << endl;
+            cout << "2. Make a sale" << endl;
+            cout << "3. Check inventory" << endl;
+            cout << "4. Exit" << endl;
+            int loggedInInput;
+            cin >> loggedInInput;
+
+            if ( loggedInInput == 1 ) {
+              //takes in input for creativity/activity/complexity
+              //creates item
+              //pushes on to vectorOfItems
+
+              //VALUES ARE TEMPORARY
+              int creativity ;
+              int activity;
+              int complexity;
+              string name;
+              // make name all lowercase
+              int price;
+              vectorOfItems.push_back(items(name, price, creativity, activity, complexity));
+              cout << "Restocked!" << endl;
+            }
+
+            else if ( loggedInInput == 2 ) {
+              //takes in input of item name
+              //removes first found item from vectorOfItems
+              //add to sale count of employee -> increments value of count for employee
+              // again this would be better in main function because we can keep track of employee with a variable equal to the username
+              string purchaseName;
+              bool success = false;
+              // make all lowercase
+
+              for (int i = 0; i < vectorOfItems.size(); i++) {
+                if (purchaseName == vectorOfItems[i].getItemName()) {
+                  vectorOfEmployees[currentEmployee].empTotalSales++;
+                  //deletes item in vector
+                  vectorOfItems.erase(vectorOfItems.begin() + i);
+                  cout << "Successful Transaction" << endl;
+                  bool success = true;
+                }
+              }
+
+              if (!success) {
+                cout << "Failed to sell item!" << endl;
+              }
+            }
+
+            else if ( loggedInInput == 3 ) {
+              //loops through vectorOfItems and prints each itemName and itemPrice
+              cout << "Current in stock: " << endl;
+              for (int i = 0; i < vectorOfItems.size(); i++) {
+                cout << "Item: " <<vectorOfItems[i].getItemName() << " Price: " << vectorOfItems[i].getItemPrice() << endl;
+              }
+            }
+
+            else if ( loggedInInput == 4 ) {
+              break;
+            }
+          } // end of while loop for user logged in
         }
       }
 
