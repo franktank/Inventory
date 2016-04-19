@@ -198,12 +198,13 @@ int main() {
 			  vector<items> vectorOfCheckedItems;
 			  while(counter < vectorOfItems.size()) // checks to see if an item with the same name has already been added to the inventory, and prompts user if they would like to use these stats
 			  {
-				  while (counter2 < vectorOfCheckedItems.size())
+				  while (counter2 < vectorOfCheckedItems.size()) // checks to see if the item is the same as what has previously been offered
 				  {
-					  if ((vectorOfCheckedItems[counter2].getItemName() == vectorOfItems[counter].getItemName()) && (vectorOfCheckedItems[counter2].getItemPrice() == vectorOfItems[counter].getItemPrice()))
+					  if ((vectorOfCheckedItems[counter2].getItemName() == vectorOfItems[counter].getItemName()) && (vectorOfCheckedItems[counter2].getItemPrice() == vectorOfItems[counter].getItemPrice()) && (vectorOfCheckedItems[counter2].getItemCreativity() == vectorOfItems[counter].getItemCreativity()) && (vectorOfCheckedItems[counter2].getItemActivity() == vectorOfItems[counter].getItemActivity()) && (vectorOfCheckedItems[counter2].getItemComplexity() == vectorOfItems[counter].getItemComplexity()))
 					  {
 						  alreadychecked = true;
 					  }
+					  counter2++;
 				  }
 				  if ((vectorOfItems[counter].getItemName() == name) && !alreadychecked)
 				  {
