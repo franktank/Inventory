@@ -1,4 +1,4 @@
-##include <iostream>
+#include <iostream>
 #include <string>
 #include <sstream>
 #include <vector>
@@ -61,7 +61,13 @@ void userLoggedIn() {
     int loggedInInput;
     cin >> loggedInInput;
     if ( loggedInInput == 1 ) {
-      //takes in input for creativity/activity/complexity
+      //takes in input for creativity/activity/com
+              string purchaseName;
+              bool success = false;
+              // make all lowercase
+
+              for (int i = 0; i < vectorOfItems.size(); i++) {
+                if (purchaseName == vectorOfItems[i].getItemName()) {plexity
       //creates item
       //pushes on to vectorOfItems
       int creativity;
@@ -171,15 +177,17 @@ int main() {
               
               cout << "What is the name of item you'd like to restock?" << endl;
               cin >> n;
-              int counter = 1;
+              int counter = 0;
               char c;
               while (counter < n.length()) //converts all characters in string to lowercase
               {
 				  c = n[counter];
 				  if (isupper(c))
 				  {
-					  tolower(n[counter]);
+					  n[counter] = tolower(c);
+					  
 				  }
+				  counter++;
 			  }
 			  name = n;
               cout << "What is the selling price for this item?" << endl; // may add functionality to check for curently existing item, and using those setting to restock the item. - PT
