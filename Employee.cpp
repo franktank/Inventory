@@ -84,14 +84,13 @@ void userLoggedIn() {
           vectorOfEmployees[currentEmployee].totalSales++;
           //deletes item in vector
           vectorOfItems.erase(vectorOfItems.begin() + i);
-
         }
       }
 
     }
 
     else if ( loggedInInput == 3 ) {
-      //iterates vectorOfItems and prints each itemName
+      //loops through vectorOfItems and prints each itemName and itemPrice
       cout << "Current in stock: " << endl;
       for (int i = 0; i < vectorOfItems.size(); i++) {
         cout << "Item: " <<vectorOfItems[i].getItemName << " Price: " << vectorOfItems[i].getItemPrice << endl;
