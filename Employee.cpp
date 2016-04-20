@@ -255,7 +255,11 @@ int main() {
 									}
 									if ((vectorOfItems[counter].getItemName() == name) && !alreadychecked)
 									{
-										cout << name << " has been found in our inventory with a price of " << vectorOfItems[counter].getItemPrice() << ", " << vectorOfItems[counter].getItemCreativity() << " Creativity, " << vectorOfItems[counter].getItemActivity() << " Activity, and " << vectorOfItems[counter].getItemComplexity() << " complexity. Would you like to use these statistics?" << endl;
+										cout << name << " has been found in our inventory with a price of " << vectorOfItems[counter].getItemPrice() << endl;
+										cout << vectorOfItems[counter].getItemCreativity() << " Creativity " << endl;
+										cout << vectorOfItems[counter].getItemActivity() << " Activity  " << endl;
+										cout << vectorOfItems[counter].getItemComplexity() << " Complexity " << endl;
+										cout << "Would you like to use these Statistics?" << endl;
 										cout << "1. Yes" << endl;
 										cout << "2. No" << endl;
 										cin >> restockchoice;
